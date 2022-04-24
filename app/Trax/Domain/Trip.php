@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
+    protected $fillable = ['date', 'total', 'miles', 'car_id'];
+
     public function car()
     {
-        return $this->hasOne('car');
+        return $this->belongsTo(Car::class);
     }
 }

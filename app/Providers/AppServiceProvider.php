@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Trax\Domain\TripRepositoryInterface;
+use App\Trax\Infrastructure\EloquentTripRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(TripRepositoryInterface::class, function () { return new EloquentTripRepository(); });
     }
 }

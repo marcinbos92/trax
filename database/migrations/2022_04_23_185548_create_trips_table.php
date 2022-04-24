@@ -16,7 +16,7 @@ class CreateTripsTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
             $table->date('date')->nullable(false);
-            $table->float('miles_driven')->nullable(false);
+            $table->float('miles')->nullable(false);
             $table->float('total')->nullable(false);
             $table->unsignedBigInteger('car_id');
             $table->foreign('car_id')->references('id')->on('cars');

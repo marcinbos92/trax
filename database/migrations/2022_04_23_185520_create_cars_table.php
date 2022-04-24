@@ -18,9 +18,10 @@ class CreateCarsTable extends Migration
                 ->string('model', 150)
                 ->nullable(false);
             $table
-                ->unsignedSmallInteger('production_year')
+                ->unsignedSmallInteger('year')
                 ->nullable(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

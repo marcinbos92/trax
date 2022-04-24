@@ -28,33 +28,19 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/cars', 'CarController@listAction');
+    Route::get('/cars/{id}', 'CarController@viewAction');
+    Route::delete('/cars/{id}', 'CarController@deleteAction');
     Route::post('/cars', 'CarController@createAction');
     Route::get('/trips', 'TripController@listAction');
     Route::post('/trips', 'TripController@createAction');
 });
 
-
-// Mock endpoint to add a new car.
-
-Route::post('mock-add-car', function(Request $request) {
-    $request->validate([
-        'year' => 'required|integer',
-        'make' => 'required|string',
-        'model' => 'required|string'
-    ]);
-})->middleware('auth:api');
-
-// Mock endpoint to delete a car with a given id
-
-Route::delete('mock-delete-car/{id}', function(Request $request) {
-})->middleware('auth:api');
-
 // Mock endpoint to add a new trip.
 
-Route::post('mock-add-trip', function(Request $request) {
-    $request->validate([
-        'date' => 'required|date', // ISO 8601 string
-        'car_id' => 'required|integer',
-        'miles' => 'required|numeric'
-    ]);
-})->middleware('auth:api');
+//Route::post('mock-add-trip', function(Request $request) {
+//    $request->validate([
+//        'date' => 'required|date', // ISO 8601 string
+//        'car_id' => 'required|integer',
+//        'miles' => 'required|numeric'
+//    ]);
+//})->middleware('auth:api');
